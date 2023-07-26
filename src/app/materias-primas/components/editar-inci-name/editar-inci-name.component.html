@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Editar Composición INCINAME</h1>
+
+<form [formGroup]="form" (ngSubmit)="editarInciName()" >
+
+    <mat-dialog-content>
+        <div class="row">
+            <div class="column">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" placeholder="Poloxamer" formControlName="nombre">
+                </mat-form-field>
+
+                <div class="error">
+                    <span *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">
+                        El nombre es un campo <strong>requerido</strong>.
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+
+            <div class="column">
+                <mat-form-field appearance="fill">
+                    <mat-label>Porcentaje %</mat-label>
+                    <input matInput type="text" placeholder="20.0" formControlName="porcentaje">
+                </mat-form-field>
+
+                <div class="error">
+                    <span *ngIf="form.get('porcentaje')?.hasError('required') && form.get('porcentaje')?.touched">
+                        El porcentaje es un campo <strong>requerido</strong>.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button type="button" (click)="cancelarAgregar()" mat-button mat-dialog-close mat-button color="accent">Cancelar</button>
+        <button type="submit" mat-raised-button color="accent" [mat-dialog-close]="true" cdkFocusInitial
+        >Aceptar</button>
+    </mat-dialog-actions>
+
+</form>

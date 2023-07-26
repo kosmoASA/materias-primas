@@ -1,0 +1,60 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>Materias Primas</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+    <div class="body_div">
+        <mat-toolbar class="toolbar_tables">
+            <mat-toolbar-row>
+                <span>Materias Primas</span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-card>
+            <div class="buttons">
+                <button mat-fab extended color="warn" (click)="openDialogAgregar('Materia Prima')">
+                    <mat-icon>science</mat-icon>
+                    Añadir Materia Prima
+                </button>
+            </div>
+            <mat-card-content>
+                
+                <lista-materias-primas 
+                    (dataToDelete)="openDialogDelete($event, 'Materia Prima')" 
+                    (dataToEdit)="openEditDialog($event, 'Materia Prima')" 
+                    (idMateriaPrima)="getIdMateriaPrima($event)"
+                ></lista-materias-primas>
+                
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <br>
+
+    <div class="body_div" *ngIf="idMateriaPrima">
+        <mat-toolbar class="toolbar_tables">
+            <mat-toolbar-row>
+                <span>Composición INCINAME</span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-card>
+            <div class="buttons">
+                <button mat-fab extended color="warn" (click)="openDialogAgregar('INCI Name')">
+                    <mat-icon>biotech</mat-icon>
+                    Añadir Composición INCINAME
+                </button>
+            </div>
+            <mat-card-content>
+                
+                <lista-inci-name 
+                    [idMateriaPrima]="idMateriaPrima"
+                    (InciToEdit)="openEditDialog($event, 'INCI Name')"
+                    (InciToDelete)="openDialogDelete($event,  'INCI Name')"
+                ></lista-inci-name>
+                
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>
